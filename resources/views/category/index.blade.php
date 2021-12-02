@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col">
             <div class="card">
-                <div class="card-header">Management Category</div>
+                <div class="card-header">Management List Category</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-4 col-md-3 col-lg-2">
