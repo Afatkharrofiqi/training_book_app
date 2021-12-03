@@ -36,6 +36,7 @@ Route::prefix('category')->group(function () {
     Route::put('/{id}', [CategoryController::class, 'update'])->name('category.update');
     // Untuk hapus data menggunakan delete
     Route::delete('/{id}', [CategoryController::class, 'destroy'])->name('category.delete');
+    Route::get('/all', [CategoryController::class, 'getAllCategory'])->name('category.all');
 });
 
 Route::resource('book', BookController::class);

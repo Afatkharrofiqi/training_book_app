@@ -31,4 +31,8 @@ class Category extends Model
                                         ->paginate(10)
                                         ->onEachSide(1);
     }
+
+    public function books(){
+        return $this->belongsToMany(Book::class, 'book_category', 'category_id', 'book_id');
+    }
 }

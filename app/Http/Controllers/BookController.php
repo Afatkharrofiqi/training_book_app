@@ -54,6 +54,8 @@ class BookController extends Controller
         }
         $book->save();
 
+        $book->categories()->attach($request->category);
+
         return redirect()->route('book.index')->with('status', 'Buku berhasil ditambahkan');
     }
 
