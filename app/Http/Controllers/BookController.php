@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -17,8 +18,12 @@ class BookController extends Controller
      */
     public function index()
     {
+        $books = Cache::remember(implode('-', request()->all()), 900, function () {
+            return Book::with('categories')->paginate(10);
+        });
+
         return view('book.index', [
-            'books' => Book::with('categories')->paginate(10) // lazy load
+            'books' => $books // lazy load
         ]);
     }
 
