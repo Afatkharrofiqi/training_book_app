@@ -16,7 +16,7 @@ class BookController extends Controller
     public function index()
     {
         return view('book.index', [
-            'books' => Book::paginate(10)
+            'books' => Book::with('categories')->paginate(10) // lazy load
         ]);
     }
 
