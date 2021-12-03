@@ -19,13 +19,13 @@
                             <div class="form-group row mb-2">
                                 <label for="judul" class="col-sm-2 col-form-label">Judul</label>
                                 <div class="col-sm-10">
-                                    <input id="judul" name="judul" type="text" class="form-control" placeholder="Masukan judul">
+                                    <input id="judul" name="judul" type="text" class="form-control" placeholder="Masukan judul" value="{{ old('judul') }}">
                                 </div>
                             </div>
                             <div class="form-group row mb-2">
                                 <label for="tahun" class="col-sm-2 col-form-label">Tahun</label>
                                 <div class="col-sm-10">
-                                    <input id="tahun" name="tahun" type="text" class="form-control" placeholder="Masukan tahun">
+                                    <input id="tahun" name="tahun" type="text" class="form-control" placeholder="Masukan tahun" value="{{ old('tahun') }}">
                                 </div>
                             </div>
                             <div class="form-group row mb-2">
@@ -38,6 +38,13 @@
                                 <label for="category" class="col-sm-2 col-form-label">Category</label>
                                 <div class="col-sm-10">
                                     <select id="category" name="category[]" multiple class="form-control">
+                                        @foreach ($category as $cat)
+                                            @foreach (old('category') ?? [] as $oldId)
+                                                @if($cat->id == $oldId)
+                                                    <option value="{{ $cat->id }}" selected>{{ $cat->name }}</option>
+                                                @endif
+                                            @endforeach
+                                        @endforeach
                                         <option></option>
                                     </select>
                                 </div>

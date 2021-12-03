@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -28,7 +29,9 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('book.create');
+        return view('book.create', [
+            'category' => Category::all()
+        ]);
     }
 
     /**
